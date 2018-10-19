@@ -9,9 +9,9 @@ public class PlayerMover : MonoBehaviour {
 	public List<Transform> borderPoints = new List<Transform>();
 	// Use this for initialization
 	void Start () {
-		lanes = 4;
+		lanes = 2;
 		leftRightScale = 0;
-		upDownScale = 0;
+		upDownScale = 0.5f;
 
 	}
 	
