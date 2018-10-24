@@ -2,38 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour {
-	float leftRightScale;
-	float upDownScale;
-	public int lanes;
-	public List<Transform> borderPoints = new List<Transform>();
-	// Use this for initialization
-	void Start () {
-		lanes = 2;
-		leftRightScale = 0;
-		upDownScale = 0.5f;
+public class PlayerMover : MonoBehaviour
+{
+    public Vector3 PlayerPos;
+    public float leftRightScale;
+    public float depthScale;
+    public float jumpScale;
+    public int lanes;
+    public Transform MovePlane;
+    public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
+    // Use this for initialization
+    void Start()
+    {
+        lanes = 5;
+        leftRightScale = 0.5f;
+        depthScale = 0.5f;
+        PlayerPos = MovePlayer();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+		if(Input.GetKeyDown(KeyCode.A)){
+			MoveHorizontal(-1);
+		}if(Input.GetKeyDown(KeyCode.D)){
+			MoveHorizontal(1);
+		}
+    }
+
+    void FixedUpdate()
+    {
+        if(depthScale <0.5f){
+			depthScale += 0.01f;
+		}
+		PlayerPos = MovePlayer();
+		transform.position = MovePlane.position + PlayerPos;
+		transform.rotation = MovePlane.rotation;
+	}
+    
+	void MoveHorizontal(int lanesToRight){
+		
+		
+		leftRightScale += 1f/(lanes-1)*lanesToRight;
+		Debug.Log("moved "+1f/(lanes-1)*lanesToRight);
+		
+		if(leftRightScale>1){
+			leftRightScale = 1;
+		}else if(leftRightScale<0){
+			leftRightScale = 0;
+		}
+
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.A)){
-		leftRightScale -= 1f/lanes;
-			
-		}
-		if(Input.GetKeyDown(KeyCode.D)){
-			leftRightScale +=1f/lanes;
-		}
-	}
-	
-	void FixedUpdate()
-	{
-		transform.position =	 Vector3.MoveTowards(transform.position, PlayerInPlane(), 0.1f);	
-	}
-	Vector3 PlayerInPlane(){
-		Vector3 leftRight = borderPoints[0].position-borderPoints[2].position;
-		Vector3 upDown = borderPoints[1].position-borderPoints[3].position;
-		
-		return leftRight * leftRightScale + upDown*upDownScale;
-	}
+	Vector3 MovePlayer()
+    {
+        float xDistance = (RightB.position - LeftB.position).magnitude;
+		float xcom = (xDistance * leftRightScale)-(xDistance/2);
+        float zDistance = (FwdB.position-BackB.position).magnitude;
+		float zcom = (zDistance*depthScale)-(zDistance/2);
+		float yDistance = (UpB.position-DownB.position).magnitude;
+		float ycom = (yDistance*jumpScale);
+		return MovePlane.right*xcom+MovePlane.forward*zcom+MovePlane.up*ycom;
+
+
+    }
 }
