@@ -179,7 +179,11 @@ Transform:
   m_Father: {fileID: 0}
 <<<<<<< refs/remotes/SpaceEscape/treadmill
 <<<<<<< refs/remotes/SpaceEscape/treadmill
+<<<<<<< refs/remotes/SpaceEscape/treadmill
   m_RootOrder: 2
+=======
+  m_RootOrder: 0
+>>>>>>> Overhauled player movement
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &193719079
 Prefab:
@@ -538,7 +542,11 @@ Transform:
   m_Father: {fileID: 0}
 <<<<<<< refs/remotes/SpaceEscape/treadmill
 <<<<<<< refs/remotes/SpaceEscape/treadmill
+<<<<<<< refs/remotes/SpaceEscape/treadmill
   m_RootOrder: 4
+=======
+  m_RootOrder: 2
+>>>>>>> Overhauled player movement
 =======
   m_RootOrder: 2
 >>>>>>> Overhauled player movement
@@ -897,7 +905,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
 <<<<<<< refs/remotes/SpaceEscape/treadmill
 <<<<<<< refs/remotes/SpaceEscape/treadmill
+<<<<<<< refs/remotes/SpaceEscape/treadmill
   m_LocalPosition: {x: -12.75, y: 1.33, z: 0}
+=======
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+>>>>>>> Overhauled player movement
 =======
   m_LocalPosition: {x: 0, y: 5, z: 0}
 >>>>>>> Overhauled player movement
@@ -916,7 +928,11 @@ Transform:
   m_Father: {fileID: 0}
 <<<<<<< refs/remotes/SpaceEscape/treadmill
 <<<<<<< refs/remotes/SpaceEscape/treadmill
+<<<<<<< refs/remotes/SpaceEscape/treadmill
   m_RootOrder: 3
+=======
+  m_RootOrder: 1
+>>>>>>> Overhauled player movement
 =======
   m_RootOrder: 1
 >>>>>>> Overhauled player movement
