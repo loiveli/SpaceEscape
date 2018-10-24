@@ -9,7 +9,8 @@ public class PlayerMover : MonoBehaviour
     public float depthScale;
     public float jumpScale;
     public int lanes;
-    public Transform MovePlane;
+    public bool Jump;
+	public Transform MovePlane;
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
     // Use this for initialization
     void Start()
@@ -18,7 +19,8 @@ public class PlayerMover : MonoBehaviour
         leftRightScale = 0.5f;
         depthScale = 0.5f;
         PlayerPos = MovePlayer();
-    }
+		Jump = false;
+	}
 
     // Update is called once per frame
     void Update()
@@ -27,13 +29,23 @@ public class PlayerMover : MonoBehaviour
 			MoveHorizontal(-1);
 		}if(Input.GetKeyDown(KeyCode.D)){
 			MoveHorizontal(1);
+		}if(Input.GetKeyDown(KeyCode.Space)&&!Jump){
+			Jump = true;
 		}
     }
 
     void FixedUpdate()
     {
-        if(depthScale <0.5f){
-			depthScale += 0.01f;
+        if(jumpScale >=1){
+			Jump= false;
+		}
+		if(Jump&&jumpScale <1){
+			jumpScale += 0.05f;
+		}else if(jumpScale >0){
+			jumpScale -= 0.1f;
+		}
+		if(depthScale <0.5f){
+			depthScale += 0.001f;
 		}
 		PlayerPos = MovePlayer();
 		transform.position = MovePlane.position + PlayerPos;
