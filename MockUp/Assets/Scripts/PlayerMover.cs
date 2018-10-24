@@ -9,23 +9,6 @@ public class PlayerMover : MonoBehaviour
     public float depthScale;
     public float jumpScale;
     public int lanes;
-    public Transform MovePlane;
-    public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
-    // Use this for initialization
-    void Start()
-    {
-        lanes = 5;
-        leftRightScale = 0.5f;
-        depthScale = 0.5f;
-        PlayerPos = MovePlayer();
-    }
-public class PlayerMover : MonoBehaviour
-{
-    public Vector3 PlayerPos;
-    public float leftRightScale;
-    public float depthScale;
-    public float jumpScale;
-    public int lanes;
     public bool Jump;
 	public Transform MovePlane;
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
@@ -46,9 +29,6 @@ public class PlayerMover : MonoBehaviour
 			MoveHorizontal(-1);
 		}if(Input.GetKeyDown(KeyCode.D)){
 			MoveHorizontal(1);
-			MoveHorizontal(-1);
-		}if(Input.GetKeyDown(KeyCode.D)){
-			MoveHorizontal(1);
 		}if(Input.GetKeyDown(KeyCode.Space)&&!Jump){
 			Jump = true;
 		}
@@ -56,14 +36,16 @@ public class PlayerMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(depthScale <0.5f){
-			depthScale += 0.01f;
-    }
-
-    void FixedUpdate()
-    {
         if(jumpScale >=1){
 			Jump= false;
+		}
+		if(Jump&&jumpScale <1){
+			jumpScale += 0.05f;
+		}else if(jumpScale >0){
+			jumpScale -= 0.1f;
+		}
+		if(depthScale <0.5f){
+			depthScale += 0.001f;
 		}
 		PlayerPos = MovePlayer();
 		transform.position = MovePlane.position + PlayerPos;
