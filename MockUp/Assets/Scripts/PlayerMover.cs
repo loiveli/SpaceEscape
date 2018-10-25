@@ -66,6 +66,16 @@ public class PlayerMover : MonoBehaviour
 
 
 	}
+	
+	void OnCollisionEnter(Collision other)
+	{
+		Debug.Log(other.gameObject.tag.ToString());
+		if(other.gameObject.tag == "Box"){
+			Debug.Log("Hit box");
+			depthScale -=0.1f;
+			other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000-transform.forward*1000+transform.right*2000*(leftRightScale-0.5f));
+		}
+	}
 	Vector3 MovePlayer()
     {
         float xDistance = (RightB.position - LeftB.position).magnitude;
