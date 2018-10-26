@@ -45,10 +45,10 @@ public class PlayerMover : MonoBehaviour
 			jumpScale -= 0.1f;
 		}
 		if(depthScale <0.5f){
-			depthScale += 0.001f;
+			depthScale += 0.0001f;
 		}
 		PlayerPos = MovePlayer();
-		transform.position = MovePlane.position + PlayerPos;
+		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
 		transform.rotation = MovePlane.rotation;
 	}
     
