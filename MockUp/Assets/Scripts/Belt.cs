@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Belt : MonoBehaviour {
 
-	[SerializeField]
-	float speed;
+	
+	public float speed;
 
 	private float currentScroll;
 
