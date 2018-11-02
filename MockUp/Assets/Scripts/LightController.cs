@@ -19,9 +19,9 @@ public class LightController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Belt speedo = mill.GetComponent<Belt>();
-		speedo.speed = fullSpeedo;
-		lighthos.range = fullSpeedo * -1;
+		//Belt speedo = mill.GetComponent<Belt>();
+		//speedo.speed = fullSpeedo;
+		lighthos.intensity = fullSpeedo * -1;
 
 		fullSpeedo += (Time.deltaTime/2);
 

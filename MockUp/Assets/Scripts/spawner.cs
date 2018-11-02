@@ -15,7 +15,7 @@ public class spawner : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Instantiate(trash, transform.position, Quaternion.identity);
+            Instantiate(trash, transform.position+transform.right*Random.Range(-2,3)*4.5f, Quaternion.identity);
         }
 	}
 }
