@@ -7,7 +7,9 @@ public class LightController : MonoBehaviour {
 	float fullSpeedo;
 	GameObject mill;
 	public Light lighthos;
-    
+    [SerializeField]
+    float regularSpeed;
+
 	// Use this for initialization
 	void Start () {
 		mill = GameObject.Find("TreadMill");
@@ -19,8 +21,15 @@ public class LightController : MonoBehaviour {
 	void Update () {
 		Belt speedo = mill.GetComponent<Belt>();
 		speedo.speed = fullSpeedo;
-		lighthos.intensity = fullSpeedo * -1;
+		lighthos.range = fullSpeedo * -1;
 
-		fullSpeedo -= (Time.deltaTime/2);
+		fullSpeedo += (Time.deltaTime/2);
+
+        if(fullSpeedo >= 6)
+        {
+            fullSpeedo = regularSpeed;
+        }
+
+
        	}
 }
