@@ -12,7 +12,7 @@ public class LightController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		mill = GameObject.Find("TreadMill");
+		mill = GameObject.Find("Matto");
 
 		lighthos = GetComponent<Light>();
 	}
