@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{CFBE5A5F-12F2-11D4-1379-98D06DA41D8F}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerMover.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PowerUp.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerMover.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMover.cs" Line="25" Column="30" />
+      <File FileName="Assets/Scripts/LightController.cs" Line="27" Column="30" />
+      <File FileName="Assets/Scripts/Belt.cs" Line="26" Column="38" />
+      <File FileName="Assets/Scripts/PowerUp.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
