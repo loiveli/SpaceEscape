@@ -13,7 +13,7 @@ public class Belt : MonoBehaviour {
 	private void Update()
     {
 
-		//Texture Scroller (Main texture)
+		//Texture Scroller (Main texture) Scrolling at the same speed as the current scroll speed
 		currentScroll = currentScroll + Time.deltaTime * speed;
 		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(0, currentScroll);
     }

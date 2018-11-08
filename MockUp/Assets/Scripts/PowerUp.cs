@@ -33,13 +33,13 @@ public class PowerUp : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player")
         {
-			GetComponent<MeshRenderer>().enabled = false;
-            GetComponent<Collider>().enabled = false;
-			Instantiate(puff, transform.position, Quaternion.identity);
-            player.transform.localScale *= playersNewSize;
-			yield return new WaitForSeconds(4f);
-			player.transform.localScale /= playersNewSize;
-            Destroy(gameObject);
+			GetComponent<MeshRenderer>().enabled = false; // Removes the Mesh so it seems that its destroyed.
+            GetComponent<Collider>().enabled = false; //Removes the collider of the powerup, so that player can't pick it up again
+			Instantiate(puff, transform.position, Quaternion.identity); // makes a particle effect when power up is picked up
+            player.transform.localScale *= playersNewSize;//Make the player a giant
+			yield return new WaitForSeconds(4f); // Wait for 4 secodns
+			player.transform.localScale /= playersNewSize; // shrink back to small
+            Destroy(gameObject); // Destroys the powerup
         }
 	}
 }
