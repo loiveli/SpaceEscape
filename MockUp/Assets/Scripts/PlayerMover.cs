@@ -42,7 +42,8 @@ public class PlayerMover : MonoBehaviour
 		PlayerPos = MovePlayer();
 		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
 		transform.rotation = MovePlane.rotation;
-		if(Jump&&jumpScale <1){
+		//jumpScale = Mathf.Abs(Mathf.Sin(Time.time));
+	if(Jump&&jumpScale <1){
 			jumpScale += 0.05f;
 		}else if(jumpScale >0){
 			jumpScale -= 0.075f;
@@ -61,7 +62,7 @@ public class PlayerMover : MonoBehaviour
 			airtime--;
 		}if(airtime == 0){
 			Jump= false;
-		}
+		} 
 		PlayerPos = MovePlayer();
 		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
 		transform.rotation = MovePlane.rotation;
