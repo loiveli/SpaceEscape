@@ -23,7 +23,6 @@ public class LightController : MonoBehaviour {
 		Belt speedo = mill.GetComponent<Belt>();
 		speedo.speed = fullSpeed;
 		fullSpeed += (Time.deltaTime/2);
-
 		lightRange = fullSpeed * 35;
 		if(lightRange < 120){
 			light.range = 120;
