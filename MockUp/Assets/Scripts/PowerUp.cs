@@ -26,16 +26,16 @@ public class PowerUp : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		StartCoroutine(PickUp(collision)) ;
+		StartCoroutine(PickUp(collision));
 	}
 
 	IEnumerator PickUp(Collision collision)
 	{
 		if (collision.gameObject.tag == "Player")
         {
-			GetComponent<MeshRenderer>().enabled = false; // Removes the Mesh so it seems that its destroyed.
             GetComponent<Collider>().enabled = false; //Removes the collider of the powerup, so that player can't pick it up again
-			Instantiate(puff, transform.position, Quaternion.identity); // makes a particle effect when power up is picked up
+            GetComponent<MeshRenderer>().enabled = false; // Removes the Mesh so it seems that its destroyed.
+            Instantiate(puff, transform.position, Quaternion.identity); // makes a particle effect when power up is picked up
             player.transform.localScale *= playersNewSize;//Make the player a giant
 			yield return new WaitForSeconds(4f); // Wait for 4 secodns
 			player.transform.localScale /= playersNewSize; // shrink back to small
