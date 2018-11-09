@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour {
 	[SerializeField]
-	float fullSpeedo;
+	float fullSpeed;
+	float lightRange;
 	GameObject mill;
-	public Light lighthos;
+	public Light light;
     [SerializeField]
     float regularSpeed;
 
@@ -14,20 +15,26 @@ public class LightController : MonoBehaviour {
 	void Start () {
 		mill = GameObject.Find("Matto");
 
-		lighthos = GetComponent<Light>();
+		light = GetComponent<Light>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Belt speedo = mill.GetComponent<Belt>();
-		//speedo.speed = fullSpeedo;
-		lighthos.intensity = fullSpeedo * -1;
+		Belt speedo = mill.GetComponent<Belt>();
+		speedo.speed = fullSpeed;
+		fullSpeed += (Time.deltaTime/2);
+		lightRange = fullSpeed * 35;
+		if(lightRange < 120){
+			light.range = 120;
+		}else{
+			light.range = lightRange;
+		}
 
-		fullSpeedo += (Time.deltaTime/2);
+		
 
-        if(fullSpeedo >= 6)
+        if(fullSpeed >= 6)
         {
-            fullSpeedo = regularSpeed;
+            fullSpeed = regularSpeed;
         }
 
 

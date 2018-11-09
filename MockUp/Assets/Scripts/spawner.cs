@@ -36,7 +36,5 @@ public class spawner : MonoBehaviour {
 			if(spawnrate >1) spawnrate -= 0.05f;
 			blockLanes.Clear();
 		}
-            
-        
 	}
 }
