@@ -12,7 +12,8 @@ public class PowerUp : MonoBehaviour {
 	GameObject player;
 	[SerializeField]
 	float playersNewSize;
-
+    [SerializeField]
+    Transform dropPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class PowerUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -42,4 +43,13 @@ public class PowerUp : MonoBehaviour {
             Destroy(gameObject); // Destroys the powerup
         }
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "DropPoint")
+        {
+            Debug.Log("Here!!");
+            GetComponent<Rigidbody>().useGravity = true;
+        }
+    }
 }
