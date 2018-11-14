@@ -12,14 +12,14 @@ public class PlayerMover : MonoBehaviour
     public bool Jump;
 	public int airtime;
 	public Transform MovePlane;
-    public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
     // Use this for initialization
     void Start()
     {
-        lanes = 5;
+        jumpScale = 0;
+		lanes = 5;
         leftRightScale = 0.5f;
         depthScale = 0.5f;
-        PlayerPos = MovePlayer();
+        PlayerPos = PlaneMove.MovePlayer(leftRightScale,depthScale,jumpScale,MovePlane);
 		Jump = false;
 		airtime = -1;
 	}
@@ -39,7 +39,7 @@ public class PlayerMover : MonoBehaviour
     void FixedUpdate()
     {
 		
-		PlayerPos = MovePlayer();
+		PlayerPos = PlaneMove.MovePlayer(leftRightScale,depthScale,jumpScale,MovePlane);
 		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
 		transform.rotation = MovePlane.rotation;
 		//jumpScale = Mathf.Abs(Mathf.Sin(Time.time));
@@ -52,7 +52,7 @@ public class PlayerMover : MonoBehaviour
 			jumpScale = 0;
 		}
 		if(jumpScale >=1&&airtime == -1){
-			airtime = 15;
+			airtime = 1;
 		}
 		if(depthScale <0.5f){
 			depthScale += 0.0001f;
@@ -63,9 +63,11 @@ public class PlayerMover : MonoBehaviour
 		}if(airtime == 0){
 			Jump= false;
 		} 
-		PlayerPos = MovePlayer();
+		/*		PlayerPos = PlaneMove.MovePlayer(leftRightScale,depthScale,jumpScale);
 		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
 		transform.rotation = MovePlane.rotation;
+		 */
+
 	}
     
 	void MoveHorizontal(int lanesToRight){
@@ -82,28 +84,17 @@ public class PlayerMover : MonoBehaviour
 
 
 	}
-	Vector3 MovePlayer()
-    {
-        float xDistance = (RightB.position - LeftB.position).magnitude;
-		float xcom = (xDistance * leftRightScale)-(xDistance/2);
-        float zDistance = (FwdB.position-BackB.position).magnitude;
-		float zcom = (zDistance*depthScale)-(zDistance/2);
-		float yDistance = (UpB.position-DownB.position).magnitude;
-		float ycom = (yDistance*jumpScale);
-		return MovePlane.right*xcom+MovePlane.forward*zcom+MovePlane.up*ycom;
-
-
-    }
+	
     
 	
 	
 	void OnCollisionEnter(Collision other)
 	{
-		Debug.Log(other.gameObject.tag.ToString());
+		
 		if(other.gameObject.tag == "Box"){
-			Debug.Log("Hit box");
+			
 			depthScale -=0.1f;
-			other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000-transform.forward*1000+transform.right*2000*(leftRightScale-0.5f));
+			
 		}
 	}
 	

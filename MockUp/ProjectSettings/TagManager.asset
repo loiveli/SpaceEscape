@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Box
   - PowerUp
+  - Spawner
+  - Boundary
+  - Matto
   layers:
   - Default
   - TransparentFX

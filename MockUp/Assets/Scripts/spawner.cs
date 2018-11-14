@@ -9,11 +9,13 @@ public class spawner : MonoBehaviour {
 	public float spawnrate;
 	public int laneblocks;
 	public List<int> blockLanes;
+	public float laneDist;
 	// Use this for initialization
 	void Start () {
 		spawntime = Time.fixedTime;
-		spawnrate = 2;
+		spawnrate = 5;
 		laneblocks = 1;
+		laneDist = PlaneMove.xDistance/4f;
 		}
 	
 	// Update is called once per frame
@@ -30,7 +32,10 @@ public class spawner : MonoBehaviour {
 				blockLanes.Remove(0);
 			}
 			foreach(int lane in blockLanes ){
-				Instantiate(trash,transform.position+transform.right*lane*4.5f,transform.rotation);
+				GameObject tempTrash = Instantiate(trash,transform.position+transform.right*lane*laneDist,Quaternion.identity);
+				tempTrash.GetComponent<TrashMove>().LanePos = (lane+2)*0.25f;
+				tempTrash.GetComponent<TrashMove>().refrencePlane = transform.parent;
+				tempTrash.GetComponent<TrashMove>().speed = 2;
 			}
 			spawntime = Time.fixedTime;
 			if(spawnrate >1) spawnrate -= 0.05f;
