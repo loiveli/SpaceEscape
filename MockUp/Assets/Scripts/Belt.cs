@@ -6,7 +6,8 @@ public class Belt : MonoBehaviour {
 
 	
 	public float speed;
-
+    [SerializeField]
+    float mattSpeedSlower = 75f;
 	private float currentScroll;
 
     
@@ -14,8 +15,8 @@ public class Belt : MonoBehaviour {
     {
 
 		//Texture Scroller (Main texture) Scrolling at the same speed as the current scroll speed
-		currentScroll = currentScroll + Time.deltaTime * speed;
-		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(0, currentScroll);
+		currentScroll = currentScroll + Time.deltaTime * speed/ mattSpeedSlower;
+		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(-currentScroll,0);
     }
 
     
