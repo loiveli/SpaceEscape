@@ -24,8 +24,8 @@ public class LightController : MonoBehaviour {
 		speedo.speed = fullSpeed;
 		fullSpeed += (Time.deltaTime/2);
 		lightRange = fullSpeed * 35;
-		if(lightRange < 120){
-			light.range = 120;
+		if(lightRange < 80){
+			light.range = 80;
 		}else{
 			light.range = lightRange;
 		}

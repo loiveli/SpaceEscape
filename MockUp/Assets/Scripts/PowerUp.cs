@@ -48,7 +48,6 @@ public class PowerUp : MonoBehaviour {
     {
         if(other.gameObject.tag == "DropPoint")
         {
-            Debug.Log("Here!!");
             GetComponent<Rigidbody>().useGravity = true;
         }
     }
