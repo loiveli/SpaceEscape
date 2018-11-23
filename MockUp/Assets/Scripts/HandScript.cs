@@ -10,6 +10,8 @@ public class HandScript : MonoBehaviour {
     float handSpeed;
     [SerializeField]
     Vector3 startPoint;
+    [SerializeField]
+    float waitTime;
 	// Use this for initialization
 	void Start () {
         startPoint = transform.position;
@@ -17,14 +19,17 @@ public class HandScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Mover();
+        StartCoroutine( Mover());
+       
 
     }
 
-    private void Mover()
+    IEnumerator Mover()
     {
             float step = handSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, dropPoint.position, step);
+            yield return new WaitForSeconds(waitTime);
+            transform.position = Vector3.MoveTowards(transform.position, startPoint, step);
     }
 
 
