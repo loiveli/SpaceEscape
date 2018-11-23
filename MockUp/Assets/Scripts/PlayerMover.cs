@@ -11,8 +11,18 @@ public class PlayerMover : MonoBehaviour
     public int lanes;
     public bool Jump;
 	public int airtime;
-	public Transform MovePlane;
+    private bool texturesEnabled;
+    [SerializeField]
+    private int flickerBool;
+    public Transform MovePlane;
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
+    [SerializeField]
+    float invicibilityTime;
+    [SerializeField]
+    GameObject Alien;
+    Animator m_Animator;
+    bool isBlinkin;
+
     // Use this for initialization
     void Start()
     {
@@ -22,7 +32,9 @@ public class PlayerMover : MonoBehaviour
         PlayerPos = MovePlayer();
 		Jump = false;
 		airtime = -1;
-	}
+        m_Animator = gameObject.GetComponent<Animator>();
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +46,7 @@ public class PlayerMover : MonoBehaviour
 		}if(Input.GetKeyDown(KeyCode.Space)&&jumpScale == 0){
 			Jump = true;
 		}
+        flickerBool = Random.Range(0, 2);
     }
 
     void FixedUpdate()
@@ -103,8 +116,22 @@ public class PlayerMover : MonoBehaviour
 		if(other.gameObject.tag == "Box"){
 			Debug.Log("Hit box");
 			depthScale -=0.1f;
-			other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000-transform.forward*1000+transform.right*2000*(leftRightScale-0.5f));
+            StartCoroutine(Invicibity());
+			//other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000-transform.forward*1000+transform.right*2000*(leftRightScale-0.5f));
 		}
 	}
-	
+
+    IEnumerator Invicibity()
+    {
+        GetComponent<Animation>().
+        GetComponent<CapsuleCollider>().enabled = false;
+        m_Animator.SetBool("isBlinking", true);
+        //Alien.GetComponent<SkinnedMeshRenderer>().enabled = false;
+        yield return new WaitForSeconds(invicibilityTime);
+        m_Animator.SetBool("isBlinking", false);
+        GetComponent<CapsuleCollider>().enabled = true;
+        //Alien.GetComponent<SkinnedMeshRenderer>().enabled = true;
+
+    }
+
 }
