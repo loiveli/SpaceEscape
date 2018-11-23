@@ -349,6 +349,11 @@ Prefab:
       propertyPath: m_Range
       value: 120.03
       objectReference: {fileID: 0}
+    - target: {fileID: 114046667400261654, guid: c4b710cfc16af49f78b0f61d66f0c699,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b710cfc16af49f78b0f61d66f0c699, type: 2}
   m_IsPrefabAsset: 0
@@ -1202,6 +1207,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114572238541800516, guid: 53ece13ae2741c94fad1d281346b52fa,
+        type: 2}
+      propertyPath: collectible
+      value: 
+      objectReference: {fileID: 1214494563979548, guid: 746cf8ba2d773494ba5a0e9fb6c3e5be,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53ece13ae2741c94fad1d281346b52fa, type: 2}
   m_IsPrefabAsset: 0
