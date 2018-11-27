@@ -24,6 +24,9 @@ public class spawner : MonoBehaviour {
 		}
 	
 	// Update is called once per frame
+	public static void SpawnPowerUp(){
+		//TODO implement spawning powerups
+	}
 	void FixedUpdate () {
         
 		if(Time.fixedTime-spawntime >spawnrate){
@@ -53,5 +56,6 @@ public class spawner : MonoBehaviour {
 			if(spawnrate >1) spawnrate -= 0.05f;
 			
 		}
+		
 	}
 }

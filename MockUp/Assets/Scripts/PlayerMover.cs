@@ -6,54 +6,66 @@ public class PlayerMover : MonoBehaviour
 {
     public Vector3 PlayerPos;
     public float leftRightScale;
-    public float depthScale;
+    public float leftRightScaleDelay;
+	public float depthScale;
     public float jumpScale;
-    public int lanes;
+    public float jumptime;
+	public float jumpSpeed;
+	public float strafeSpeed;
+	public float jumpHeight;
+	public int lanes;
     public bool Jump;
 	public int airtime;
+	public int collected;
 	public Transform MovePlane;
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
     // Use this for initialization
     void Start()
     {
-        lanes = 5;
+        jumpSpeed = Mathf.PI/1.5f;
+		lanes = 5;
         leftRightScale = 0.5f;
-        depthScale = 0.5f;
+        leftRightScaleDelay = leftRightScale;
+		depthScale = 0.5f;
         PlayerPos = MovePlayer();
 		Jump = false;
 		airtime = -1;
+		jumpHeight = 0.5f;
 	}
 
     // Update is called once per frame
     void Update()
     {
-		if(Input.GetKeyDown(KeyCode.A)){
+		if(jumpScale <0.1f){
+			if(Input.GetKeyDown(KeyCode.A)){
 			MoveHorizontal(-1);
 		}if(Input.GetKeyDown(KeyCode.D)){
 			MoveHorizontal(1);
-		}if(Input.GetKeyDown(KeyCode.Space)&&jumpScale == 0){
+		}if(Input.GetKeyDown(KeyCode.Space)){
 			Jump = true;
+			jumptime = 0;
 		}
+		}
+		
     }
 
     void FixedUpdate()
     {
 		
-		PlayerPos = MovePlayer();
-		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
-		transform.rotation = MovePlane.rotation;
-		//jumpScale = Mathf.Abs(Mathf.Sin(Time.time));
-	if(Jump&&jumpScale <1){
-			jumpScale += 0.03f;
-		}if(jumpScale >1){
-			Jump = false;
-
-		}if (jumpScale>0&&!Jump){
-			jumpScale -=0.025f;
+		if(collected >=50){
+			spawner.SpawnPowerUp();
 		}
-		if(jumpScale <0){
+		if(Jump){
+			jumptime += Time.fixedDeltaTime*jumpSpeed;
+			jumpScale = Mathf.Abs(Mathf.Sin(jumptime))*jumpHeight;
+
+		}
+		if(jumptime >= Mathf.PI){
+			Jump = false;	
 			jumpScale = 0;
 		}
+		
+	
 		
 		if(depthScale <0.5f){
 			depthScale += 0.0001f;
@@ -61,19 +73,19 @@ public class PlayerMover : MonoBehaviour
 		
 		PlayerPos = MovePlayer();
 		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
-		transform.rotation = MovePlane.rotation;
+		leftRightScale = Mathf.MoveTowards(leftRightScale,leftRightScaleDelay,0.1f);
 	}
     
 	void MoveHorizontal(int lanesToRight){
 		
 		
-		leftRightScale += 1f/(lanes-1)*lanesToRight;
+		leftRightScaleDelay += 1f/(lanes-1)*lanesToRight;
 		Debug.Log("moved "+1f/(lanes-1)*lanesToRight);
 		
-		if(leftRightScale>1){
-			leftRightScale = 1;
-		}else if(leftRightScale<0){
-			leftRightScale = 0;
+		if(leftRightScaleDelay>1){
+			leftRightScaleDelay = 1;
+		}else if(leftRightScaleDelay<0){
+			leftRightScaleDelay = 0;
 		}
 
 
@@ -103,6 +115,7 @@ public class PlayerMover : MonoBehaviour
 		}
 		Debug.Log(other.gameObject.tag.ToString());
 		if(other.gameObject.tag == "Collectible"){
+			collected++;
 			Debug.Log("Collected collectible");
 			GameObject.Destroy(other.gameObject);
 		}
