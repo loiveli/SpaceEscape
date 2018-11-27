@@ -170,9 +170,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4733219552944292}
   - component: {fileID: 137543522391832058}
+  - component: {fileID: 95605340923364446}
   m_Layer: 0
   m_Name: Alien
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -847,7 +848,8 @@ GameObject:
   - component: {fileID: 4960472416244898}
   - component: {fileID: 95796575920473230}
   - component: {fileID: 136393588558073528}
-  - component: {fileID: 114637569441427578}
+  - component: {fileID: 111540475773575568}
+  - component: {fileID: 114046210306722994}
   m_Layer: 0
   m_Name: alien_animation
   m_TagString: Player
@@ -1870,6 +1872,24 @@ Transform:
   m_Father: {fileID: 4091505729182910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95605340923364446
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1134440235292166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 7c678bcfc9ce47b43a7077517dafa948, type: 3}
+  m_Controller: {fileID: 9100000, guid: 83caf126c582240268e36cd69158bc71, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95796575920473230
 Animator:
   serializedVersion: 3
@@ -1888,7 +1908,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114637569441427578
+--- !u!111 &111540475773575568
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1854801712271712}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400002, guid: 7c678bcfc9ce47b43a7077517dafa948, type: 3}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &114046210306722994
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
