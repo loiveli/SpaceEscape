@@ -44,25 +44,21 @@ public class PlayerMover : MonoBehaviour
 		transform.rotation = MovePlane.rotation;
 		//jumpScale = Mathf.Abs(Mathf.Sin(Time.time));
 	if(Jump&&jumpScale <1){
-			jumpScale += 0.05f;
-		}else if(jumpScale >0){
-			jumpScale -= 0.075f;
+			jumpScale += 0.03f;
+		}if(jumpScale >1){
+			Jump = false;
+
+		}if (jumpScale>0&&!Jump){
+			jumpScale -=0.025f;
 		}
 		if(jumpScale <0){
 			jumpScale = 0;
 		}
-		if(jumpScale >=1&&airtime == -1){
-			airtime = 15;
-		}
+		
 		if(depthScale <0.5f){
 			depthScale += 0.0001f;
 		}
-		if(airtime >=0)
-		{
-			airtime--;
-		}if(airtime == 0){
-			Jump= false;
-		} 
+		
 		PlayerPos = MovePlayer();
 		transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos,.25f);
 		transform.rotation = MovePlane.rotation;
@@ -104,6 +100,11 @@ public class PlayerMover : MonoBehaviour
 			Debug.Log("Hit box");
 			depthScale -=0.1f;
 			other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000-transform.forward*1000+transform.right*2000*(leftRightScale-0.5f));
+		}
+		Debug.Log(other.gameObject.tag.ToString());
+		if(other.gameObject.tag == "Collectible"){
+			Debug.Log("Collected collectible");
+			GameObject.Destroy(other.gameObject);
 		}
 	}
 	
