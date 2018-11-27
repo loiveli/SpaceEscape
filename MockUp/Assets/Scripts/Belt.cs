@@ -17,6 +17,15 @@ public class Belt : MonoBehaviour {
 		//Texture Scroller (Main texture) Scrolling at the same speed as the current scroll speed
 		currentScroll = currentScroll + Time.deltaTime * speed/ mattSpeedSlower;
 		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(-currentScroll,0);
+
+        if (Input.GetKey(KeyCode.W))
+            {
+                speed += Time.deltaTime;
+            }
+        if (Input.GetKey(KeyCode.S)){
+            speed -= Time.deltaTime*2;
+        }
+        
     }
 
     

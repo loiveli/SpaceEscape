@@ -161,6 +161,7 @@ public class PlayerMover : MonoBehaviour
         giant = true;
         targetScale *= playersNewSize;//Make the player a giant
         yield return new WaitForSeconds(8f); // Wait for 4 secodns
+        giant = false;
         Instantiate(puff, transform.position, Quaternion.identity);
         targetScale *= 1/playersNewSize ; // shrink back to small
     }
