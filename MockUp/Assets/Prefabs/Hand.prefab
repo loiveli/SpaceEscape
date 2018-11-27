@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114920572502922476}
   m_Layer: 0
   m_Name: PowerUp
-  m_TagString: PowerUp
+  m_TagString: giantPowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1461,6 +1461,7 @@ MonoBehaviour:
   dropPoint: {fileID: 0}
   handSpeed: 10
   startPoint: {x: 0, y: 0, z: 0}
+  waitTime: 0
 --- !u!114 &114920572502922476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1472,9 +1473,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1047e5264d4234dcdbc54db554457c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puff: {fileID: 1373725591292792, guid: 4614a4b862fa944008e2aee4c712336e, type: 2}
-  player: {fileID: 0}
-  playersNewSize: 2
   dropPoint: {fileID: 0}
 --- !u!137 &137245973070586378
 SkinnedMeshRenderer:

@@ -16,7 +16,11 @@ public class PlayerMover : MonoBehaviour
 	public int lanes;
     public bool Jump;
 	public int airtime;
+	[SerializeField]
+	GameObject puff;
 	public int collected;
+	[SerializeField]
+	float playersNewSize;
 	public Transform MovePlane;
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
     // Use this for initialization
@@ -119,6 +123,18 @@ public class PlayerMover : MonoBehaviour
 			Debug.Log("Collected collectible");
 			GameObject.Destroy(other.gameObject);
 		}
+		if(other.gameObject.tag == "giantPowerUp"){
+			StartCoroutine(Giant());
+		}
+	}
+
+		IEnumerator Giant()
+	{
+		Instantiate(puff,transform.position,Quaternion.identity);
+        transform.localScale *= playersNewSize;//Make the player a giant
+		yield return new WaitForSeconds(4f); // Wait for 4 secodns
+		Instantiate(puff,transform.position,Quaternion.identity);
+		transform.localScale /= playersNewSize; // shrink back to small
 	}
 	
 }
