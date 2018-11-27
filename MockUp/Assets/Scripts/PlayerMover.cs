@@ -93,7 +93,7 @@ public class PlayerMover : MonoBehaviour
         PlayerPos = MovePlayer();
         transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos, .25f);
         leftRightScale = Mathf.MoveTowards(leftRightScale, leftRightScaleDelay, 0.1f);
-		transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 0.1f);
+		transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 0.1f*playersNewSize);
     }
 
     void MoveHorizontal(int lanesToRight)
@@ -160,8 +160,7 @@ public class PlayerMover : MonoBehaviour
         Instantiate(puff, transform.position, Quaternion.identity);
         giant = true;
         targetScale *= playersNewSize;//Make the player a giant
-        yield return new WaitForSeconds(4f); // Wait for 4 secodns
-        giant = false;
+        yield return new WaitForSeconds(8f); // Wait for 4 secodns
         Instantiate(puff, transform.position, Quaternion.identity);
         targetScale *= 1/playersNewSize ; // shrink back to small
     }
