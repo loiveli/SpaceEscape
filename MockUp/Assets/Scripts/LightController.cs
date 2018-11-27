@@ -7,7 +7,7 @@ public class LightController : MonoBehaviour {
 	float fullSpeed;
 	float lightRange;
 	GameObject mill;
-	public Light light;
+	public Light changingLight;
     [SerializeField]
     float regularSpeed;
 
@@ -15,7 +15,7 @@ public class LightController : MonoBehaviour {
 	void Start () {
 		mill = GameObject.Find("Matto");
 
-		light = GetComponent<Light>();
+		changingLight = GetComponent<Light>();
 	}
 	
 	// Update is called once per frame
@@ -25,9 +25,9 @@ public class LightController : MonoBehaviour {
 		fullSpeed += (Time.deltaTime/2);
 		lightRange = fullSpeed * 35;
 		if(lightRange < 80){
-			light.range = 80;
+			changingLight.range = 80;
 		}else{
-			light.range = lightRange;
+			changingLight.range = lightRange;
 		}
 
 		
