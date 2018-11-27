@@ -14,6 +14,9 @@ public class PlayerMover : MonoBehaviour
     public float strafeSpeed;
     public float jumpHeight;
     public int lanes;
+    [SerializeField]
+    GameObject breakStuff;
+    bool giant;
     public bool Jump;
 	public Vector3 targetScale;
     public int airtime;
@@ -129,7 +132,7 @@ public class PlayerMover : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         Debug.Log(other.gameObject.tag.ToString());
-        if (other.gameObject.tag == "Box")
+        if (other.gameObject.tag == "Box" && !giant)
         {
             Debug.Log("Hit box");
             depthScale -= 0.1f;
@@ -146,20 +149,21 @@ public class PlayerMover : MonoBehaviour
         {
             StartCoroutine(Giant());
         }
+        if(other.gameObject.tag == "Box" && giant == true){
+            Instantiate(breakStuff, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        }
     }
 
     IEnumerator Giant()
     {
         Instantiate(puff, transform.position, Quaternion.identity);
+        giant = true;
         targetScale *= playersNewSize;//Make the player a giant
         yield return new WaitForSeconds(4f); // Wait for 4 secodns
+        giant = false;
         Instantiate(puff, transform.position, Quaternion.identity);
-
-        
         targetScale *= 1/playersNewSize ; // shrink back to small
-        
-        
-
     }
 
 }

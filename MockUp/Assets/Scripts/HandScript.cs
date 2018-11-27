@@ -12,6 +12,9 @@ public class HandScript : MonoBehaviour {
     Vector3 startPoint;
     [SerializeField]
     float waitTime;
+    [SerializeField]
+
+    private int collectables;
 	// Use this for initialization
 	void Start () {
         startPoint = transform.position;
@@ -19,6 +22,9 @@ public class HandScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        
+        
         StartCoroutine( Mover());
        
 
