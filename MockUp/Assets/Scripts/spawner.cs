@@ -5,36 +5,57 @@ using System.Linq;
 public class spawner : MonoBehaviour {
 
     public GameObject trash;
+	public GameObject collectible;
 	public float spawntime;
 	public float spawnrate;
 	public int laneblocks;
+	public int lastLane;
 	public List<int> blockLanes;
+	public List<int> refrenceList;
 	// Use this for initialization
 	void Start () {
 		spawntime = Time.fixedTime;
 		spawnrate = 2;
 		laneblocks = 1;
+		lastLane =-1;
+		for(int k =-2;k<=2;k++){
+			refrenceList.Add(k);
+		}
 		}
 	
 	// Update is called once per frame
+	public static void SpawnPowerUp(){
+		//TODO implement spawning powerups
+	}
 	void FixedUpdate () {
         
 		if(Time.fixedTime-spawntime >spawnrate){
-			laneblocks = Random.Range(1,6);
+			blockLanes.Clear();
+			laneblocks = Random.Range(1,5);
 			for(int blocks = 0; blocks<laneblocks; blocks++){
-				blockLanes.Add(Random.Range(-2,3));
+				blockLanes.Add(Random.Range(0,5)-2);
 
 			}
 			blockLanes = blockLanes.Distinct().ToList();
-			if(blockLanes.Count == 5){
-				blockLanes.Remove(0);
-			}
+			blockLanes.Sort();
+			
 			foreach(int lane in blockLanes ){
 				Instantiate(trash,transform.position+transform.right*lane*4.5f,transform.rotation);
 			}
+			
+			
+				int RNGlane = Random.Range(0,6-blockLanes.Count-1);
+				List<int> tempList = refrenceList.Except(blockLanes).ToList();
+				Debug.Log(RNGlane + " RNGLANE");
+				lastLane = tempList[RNGlane];
+				Instantiate(collectible,transform.position+transform.right*lastLane*4.5f,transform.rotation);
+				Debug.Log(lastLane + " was chosen as new lane");
+				
+			
 			spawntime = Time.fixedTime;
 			if(spawnrate >1) spawnrate -= 0.05f;
-			blockLanes.Clear();
+			
 		}
+		
 	}
 }

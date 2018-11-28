@@ -9,27 +9,50 @@ public class HandScript : MonoBehaviour {
     [SerializeField]
     float handSpeed;
     [SerializeField]
+    float step;
+    [SerializeField]
     Vector3 startPoint;
     [SerializeField]
     float waitTime;
+    [SerializeField]
+    private int collectables;
+    [SerializeField]
+    bool done;
 	// Use this for initialization
 	void Start () {
         startPoint = transform.position;
+        step = handSpeed * Time.deltaTime;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        StartCoroutine( Mover());
+
+        
+        if(!done){
+                StartCoroutine( MoveIn());
+        } else
+        {
+            StartCoroutine(MoveOut());
+        }
+        
        
 
     }
 
-    IEnumerator Mover()
+    IEnumerator MoveIn()
     {
-            float step = handSpeed * Time.deltaTime;
+            done = false;
             transform.position = Vector3.MoveTowards(transform.position, dropPoint.position, step);
             yield return new WaitForSeconds(waitTime);
-            transform.position = Vector3.MoveTowards(transform.position, startPoint, step);
+            done = true;
+            
+    }
+
+    IEnumerator MoveOut(){
+        transform.position = Vector3.MoveTowards(transform.position, startPoint, step);
+        yield return new WaitForSeconds(waitTime);
+
     }
 
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Destroyer : MonoBehaviour {
-
+	[SerializeField]
+	float destructionTime = 20;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +12,6 @@ public class Destroyer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Destroy(gameObject, 20f);
+        Destroy(gameObject, destructionTime);
 	}
 }
