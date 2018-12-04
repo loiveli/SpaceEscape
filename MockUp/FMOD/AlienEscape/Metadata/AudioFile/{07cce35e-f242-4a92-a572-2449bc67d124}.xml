@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{07cce35e-f242-4a92-a572-2449bc67d124}">
+        <property name="assetPath">
+            <value>Treadmill.mp3</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>24.050000000000001</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{cca9baa5-a009-4781-b05f-8b22c09eac25}</destination>
+        </relationship>
+    </object>
+</objects>

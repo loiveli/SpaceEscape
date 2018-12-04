@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{9b4144bc-4d53-4e1f-8125-a1ba81d38823}">
+        <property name="assetPath">
+            <value>Running steps.mp3</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>11.176031746031747</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{cca9baa5-a009-4781-b05f-8b22c09eac25}</destination>
+        </relationship>
+    </object>
+</objects>
