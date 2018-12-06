@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class PlayerMover : MonoBehaviour
     public float jumpHeight;
     public int lanes;
     [SerializeField]
+    float maxSpeed;
+    [SerializeField]
+    float minSpeed;
+    [SerializeField]
     GameObject breakStuff;
-    bool giant;
+    public bool giant;
     public bool Jump;
 	public Vector3 targetScale;
     public int airtime;
@@ -24,9 +29,13 @@ public class PlayerMover : MonoBehaviour
     GameObject puff;
     public int collected;
     [SerializeField]
+    int totalObstaclesSmashed;
+    [SerializeField]
     float playersNewSize;
+    public int obstaclesSmashed;
     public Transform MovePlane;
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
+    public Belt belt;
     // Use this for initialization
     void Start()
     {
@@ -137,6 +146,7 @@ public class PlayerMover : MonoBehaviour
             Debug.Log("Hit box");
             depthScale -= 0.1f;
             other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000 - transform.forward * 1000 + transform.right * 2000 * (leftRightScale - 0.5f));
+            belt.speed -=1;
         }
         Debug.Log(other.gameObject.tag.ToString());
         if (other.gameObject.tag == "Collectible")
@@ -144,6 +154,7 @@ public class PlayerMover : MonoBehaviour
             collected++;
             Debug.Log("Collected collectible");
             GameObject.Destroy(other.gameObject);
+            belt.speed += 1;
         }
         if (other.gameObject.tag == "giantPowerUp")
         {
@@ -152,6 +163,8 @@ public class PlayerMover : MonoBehaviour
         if(other.gameObject.tag == "Box" && giant == true){
             Instantiate(breakStuff, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
+            obstaclesSmashed++;
+            totalObstaclesSmashed++;
         }
     }
 
@@ -160,10 +173,11 @@ public class PlayerMover : MonoBehaviour
         Instantiate(puff, transform.position, Quaternion.identity);
         giant = true;
         targetScale *= playersNewSize;//Make the player a giant
-        yield return new WaitForSeconds(8f); // Wait for 4 secodns
+        yield return new WaitForSeconds(8f); // Wait for 8 seconds
         giant = false;
         Instantiate(puff, transform.position, Quaternion.identity);
         targetScale *= 1/playersNewSize ; // shrink back to small
+        obstaclesSmashed = 0;
     }
 
 }
