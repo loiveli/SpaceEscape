@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Stats : MonoBehaviour {
     [SerializeField]
-    Text timeRunned;
+    TextMeshPro timeRunned;
     [SerializeField]
     PlayerMover player;
     [SerializeField]
-    Text collectedItemsText;
+    TextMeshPro collectedItemsText;
     [SerializeField]
-    Text giantPU;
+    TextMeshPro giantPU;
     private float puTime = 8;
     [SerializeField]
-    Text doSomething;
+    TextMeshProUGUI doSomething;
     [SerializeField]
-    Text speed;
+    TextMeshPro speed;
     [SerializeField]
     Belt belt;
 	// Use this for initialization
