@@ -1705,6 +1705,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 492739642}
     m_Modifications:
+    - target: {fileID: 114572238541800516, guid: 53ece13ae2741c94fad1d281346b52fa,
+        type: 2}
+      propertyPath: trash.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572238541800516, guid: 53ece13ae2741c94fad1d281346b52fa,
+        type: 2}
+      propertyPath: PowerUpObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4826765418900900, guid: 53ece13ae2741c94fad1d281346b52fa, type: 2}
       propertyPath: m_LocalPosition.x
       value: -5.8
@@ -1796,6 +1806,17 @@ Prefab:
     - target: {fileID: 114572238541800516, guid: 53ece13ae2741c94fad1d281346b52fa,
         type: 2}
       propertyPath: PowerUpObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572238541800516, guid: 53ece13ae2741c94fad1d281346b52fa,
+        type: 2}
+      propertyPath: trash.Array.data[0]
+      value: 
+      objectReference: {fileID: 1953408677383208, guid: 287a16393f2ffda408549c0b16491d0a,
+        type: 2}
+    - target: {fileID: 114572238541800516, guid: 53ece13ae2741c94fad1d281346b52fa,
+        type: 2}
+      propertyPath: PowerUpObj.Array.data[0]
       value: 
       objectReference: {fileID: 1136895322256668, guid: aa2bf92e112ed3a4da718c42c7979207,
         type: 2}
