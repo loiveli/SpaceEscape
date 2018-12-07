@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Alien
-  m_Shader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
-  m_ShaderKeywords: _TEX_ON _VCOLOR_ON
+  m_Name: objects spawner machine
+  m_Shader: {fileID: 4800000, guid: 44b54c59129572f469a949a22bc08cd0, type: 3}
+  m_ShaderKeywords: _COLOR_ON _TEX_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 37e2b25728c464ee886fac986670bfca, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71077c2b916b5c64db6be577de862893, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,21 +66,19 @@ Material:
     - _DetailTex: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 1.23
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TintColor: 0
+    - _TintColor: 1
     - _UVSec: 0
-    - _VertexColor: 1
+    - _VertexColor: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.2599235, g: 0.9339623, b: 0.9339623, a: 1}
+    - _Color: {r: 0.6415094, g: 0.6263795, b: 0.6263795, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.021626905, g: 0.3971952, b: 0.509434, a: 1}

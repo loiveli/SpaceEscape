@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: FMOD/AlienEscape/AlienEscape.fspro
-  SourceProjectPathUnformatted: FMOD/AlienEscape/AlienEscape.fspro
-  SourceBankPathUnformatted: FMOD/AlienEscape/Build
+  sourceProjectPath: FMOD\AlienEscape\AlienEscape.fspro
+  SourceProjectPathUnformatted: FMOD\AlienEscape\AlienEscape.fspro
+  SourceBankPathUnformatted: FMOD\AlienEscape\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0

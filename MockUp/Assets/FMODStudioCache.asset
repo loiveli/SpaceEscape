@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114645846145261192}
-  - {fileID: 114575461508175564}
+  - {fileID: 114733528173555164}
+  - {fileID: 114368050721931116}
   EditorEvents:
-  - {fileID: 114919779821261410}
-  - {fileID: 114278525412985460}
-  - {fileID: 114714578285520326}
-  MasterBankRef: {fileID: 114575461508175564}
-  StringsBankRef: {fileID: 114645846145261192}
-  stringsBankWriteTime: 636790867320000000
+  - {fileID: 114720261353909784}
+  - {fileID: 114495316788619620}
+  - {fileID: 114890778658224180}
+  MasterBankRef: {fileID: 114368050721931116}
+  StringsBankRef: {fileID: 114733528173555164}
+  stringsBankWriteTime: 636797794094115545
   cacheVersion: 2
 --- !u!114 &114278525412985460
 MonoBehaviour:
@@ -44,6 +44,47 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 10000
+--- !u!114 &114368050721931116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\User\Documents\GitHub\SpaceEscape\MockUp\FMOD\AlienEscape\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636797794093965971
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 3393152
+  Exists: 1
+--- !u!114 &114495316788619620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Music
+  guid: acf98c1ad9d4ab40a996f563c95cca8a
+  Banks:
+  - {fileID: 114368050721931116}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 146337
 --- !u!114 &114575461508175564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +144,68 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 146337
+--- !u!114 &114720261353909784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Treadmill
+  guid: 6e99bbce5d783c48a904f0aa9f17d5c9
+  Banks:
+  - {fileID: 114368050721931116}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 24050
+--- !u!114 &114733528173555164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\AlienEscape\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636797794094115545
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 806
+  Exists: 1
+--- !u!114 &114890778658224180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Running
+  guid: fc832d7484ce6141959d432bc84a1972
+  Banks:
+  - {fileID: 114368050721931116}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 10000
 --- !u!114 &114919779821261410
 MonoBehaviour:
   m_ObjectHideFlags: 0
