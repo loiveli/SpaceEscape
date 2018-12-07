@@ -6,11 +6,15 @@ public class spawner : MonoBehaviour {
 
     public GameObject trash;
 	public GameObject collectible;
+	public GameObject Hand;
+	public GameObject PowerUpObj;
 	public float spawntime;
 	public float spawnrate;
 	public int laneblocks;
 	public int lastLane;
 	public List<int> blockLanes;
+	public bool powerUp;
+	public int powerUpLane;
 	public List<int> refrenceList;
 	// Use this for initialization
 	void Start () {
@@ -24,8 +28,8 @@ public class spawner : MonoBehaviour {
 		}
 	
 	// Update is called once per frame
-	public static void SpawnPowerUp(){
-		//TODO implement spawning powerups
+	public void SpawnPowerUp( int lane){
+		
 	}
 	void FixedUpdate () {
         
@@ -39,16 +43,25 @@ public class spawner : MonoBehaviour {
 			blockLanes = blockLanes.Distinct().ToList();
 			blockLanes.Sort();
 			
+			int RNGlane = Random.Range(0,6-blockLanes.Count-1);
+				List<int> tempList = refrenceList.Except(blockLanes).ToList();
+				Debug.Log(RNGlane + " RNGLANE");
+				lastLane = tempList[RNGlane];
+				if(!powerUp){
+					Instantiate(collectible,transform.position+transform.right*lastLane*PlayerMover.xDistance/4,transform.rotation);
+				}else{
+					blockLanes.Remove(powerUpLane);
+					Instantiate(PowerUpObj, transform.position + transform.right*powerUpLane*PlayerMover.xDistance/4, transform.rotation);
+					powerUp = false;
+					Hand.GetComponent<HandScript>().deliver = false;
+				}
 			foreach(int lane in blockLanes ){
 				Instantiate(trash,transform.position+transform.right*lane*4.5f,transform.rotation);
 			}
 			
 			
-				int RNGlane = Random.Range(0,6-blockLanes.Count-1);
-				List<int> tempList = refrenceList.Except(blockLanes).ToList();
-				Debug.Log(RNGlane + " RNGLANE");
-				lastLane = tempList[RNGlane];
-				Instantiate(collectible,transform.position+transform.right*lastLane*4.5f,transform.rotation);
+				
+				
 				Debug.Log(lastLane + " was chosen as new lane");
 				
 			

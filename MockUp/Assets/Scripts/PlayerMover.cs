@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerMover : MonoBehaviour
 {
     public Vector3 PlayerPos;
+    public GameObject Hand;
     public float leftRightScale;
     public float leftRightScaleDelay;
     public float depthScale;
@@ -37,6 +38,9 @@ public class PlayerMover : MonoBehaviour
     public Transform LeftB, RightB, BackB, FwdB, UpB, DownB;
     public Belt belt;
     // Use this for initialization
+    public static float xDistance;
+    public static float yDistance;
+    public static float zDistance;
     void Start()
     {
         jumpSpeed = Mathf.PI / 1.5f;
@@ -49,7 +53,10 @@ public class PlayerMover : MonoBehaviour
         airtime = -1;
         jumpHeight = 0.5f;
 		targetScale = transform.localScale;
-	}
+        xDistance = (RightB.position - LeftB.position).magnitude;
+        yDistance = (UpB.position - DownB.position).magnitude;
+        zDistance = (FwdB.position - BackB.position).magnitude;
+    }
 
     // Update is called once per frame
     void Update()
@@ -76,9 +83,10 @@ public class PlayerMover : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (collected >= 50)
+        if (collected >= 2 &&Hand.GetComponent<HandScript>().deliver == false)
         {
-            spawner.SpawnPowerUp();
+            Hand.GetComponent<HandScript>().StartDelivery(MovePlane,Random.Range(0,5));
+            collected = 0;
         }
         if (Jump)
         {
@@ -125,18 +133,25 @@ public class PlayerMover : MonoBehaviour
     }
     Vector3 MovePlayer()
     {
-        float xDistance = (RightB.position - LeftB.position).magnitude;
+        
         float xcom = (xDistance * leftRightScale) - (xDistance / 2);
-        float zDistance = (FwdB.position - BackB.position).magnitude;
+        
         float zcom = (zDistance * depthScale) - (zDistance / 2);
-        float yDistance = (UpB.position - DownB.position).magnitude;
+        
         float ycom = (yDistance * jumpScale);
         return MovePlane.right * xcom + MovePlane.forward * zcom + MovePlane.up * ycom;
 
 
     }
 
-
+    public static Vector3 GetPosInPlane( float xScale,float yScale, float zScale,Transform refPlane){
+        float xcom = (xDistance * xScale) - (xDistance / 2);
+        
+        float zcom = (zDistance * zScale) - (zDistance / 2);
+        
+        float ycom = (yDistance * yScale);
+        return refPlane.right * xcom + refPlane.forward * zcom + refPlane.up * ycom;
+    }
 
     void OnCollisionEnter(Collision other)
     {

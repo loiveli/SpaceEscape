@@ -3,57 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandScript : MonoBehaviour {
-
-    [SerializeField]
-    Transform dropPoint;
-    [SerializeField]
-    float handSpeed;
-    [SerializeField]
-    float step;
-    [SerializeField]
-    Vector3 startPoint;
-    [SerializeField]
-    float waitTime;
-    [SerializeField]
-    private int collectables;
-    [SerializeField]
-    bool done;
+	public Vector3 targetPos;
+	public Vector3 startPos;
+	public GameObject spawner;
+	public bool deliver;
 	// Use this for initialization
+	int powerUpLane;
 	void Start () {
-        startPoint = transform.position;
-        step = handSpeed * Time.deltaTime;
+		deliver = false;
+	}
+	public void StartDelivery(Transform refPlane, int xScale){
+		targetPos = PlayerMover.GetPosInPlane((xScale*0.25f)+0.25f, 1,1,refPlane);
+		deliver = true;
+		powerUpLane =xScale;
+	}
+	// Update is called once per frame
+	void FixedUpdate () {
+		if(deliver){
+			transform.position = Vector3.MoveTowards(transform.position, targetPos, 0.5f);
 
+		}else if(transform.position != startPos){
+			transform.position = Vector3.MoveTowards(transform.position, startPos, 1f);
+		}
+		if(transform.position == targetPos){
+			SpawnPowerUp();
+			
+		}
+	}
+	void SpawnPowerUp(){
+		spawner.GetComponent<spawner>().powerUp = true;
+		spawner.GetComponent<spawner>().powerUpLane = powerUpLane-2;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-        
-        if(!done){
-                StartCoroutine( MoveIn());
-        } else
-        {
-            StartCoroutine(MoveOut());
-        }
-        
-       
-
-    }
-
-    IEnumerator MoveIn()
-    {
-            done = false;
-            transform.position = Vector3.MoveTowards(transform.position, dropPoint.position, step);
-            yield return new WaitForSeconds(waitTime);
-            done = true;
-            
-    }
-
-    IEnumerator MoveOut(){
-        transform.position = Vector3.MoveTowards(transform.position, startPoint, step);
-        yield return new WaitForSeconds(waitTime);
-
-    }
-
-
 }
