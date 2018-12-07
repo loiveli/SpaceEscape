@@ -7,6 +7,7 @@ public class PlayerMover : MonoBehaviour
 {
     public Vector3 PlayerPos;
     public GameObject Hand;
+    public GameObject alien;
     public float leftRightScale;
     public float leftRightScaleDelay;
     public float depthScale;
@@ -14,6 +15,7 @@ public class PlayerMover : MonoBehaviour
     public float jumptime;
     public float jumpSpeed;
     public float strafeSpeed;
+    public float recoverySpeed;
     public float jumpHeight;
     public int lanes;
     [SerializeField]
@@ -24,7 +26,7 @@ public class PlayerMover : MonoBehaviour
     GameObject breakStuff;
     public bool giant;
     public bool Jump;
-	public Vector3 targetScale;
+    public Vector3 targetScale;
     public int airtime;
     [SerializeField]
     GameObject puff;
@@ -41,6 +43,13 @@ public class PlayerMover : MonoBehaviour
     public static float xDistance;
     public static float yDistance;
     public static float zDistance;
+    private bool invincible;
+
+    
+    public int invistimer;
+
+    
+
     void Start()
     {
         jumpSpeed = Mathf.PI / 1.5f;
@@ -52,10 +61,11 @@ public class PlayerMover : MonoBehaviour
         Jump = false;
         airtime = -1;
         jumpHeight = 0.5f;
-		targetScale = transform.localScale;
+        targetScale = transform.localScale;
         xDistance = (RightB.position - LeftB.position).magnitude;
         yDistance = (UpB.position - DownB.position).magnitude;
         zDistance = (FwdB.position - BackB.position).magnitude;
+        recoverySpeed = 0.00002f;
     }
 
     // Update is called once per frame
@@ -83,9 +93,9 @@ public class PlayerMover : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (collected >= 2 &&Hand.GetComponent<HandScript>().deliver == false)
+        if (collected >= 25 && Hand.GetComponent<HandScript>().deliver == false)
         {
-            Hand.GetComponent<HandScript>().StartDelivery(MovePlane,Random.Range(0,5));
+            Hand.GetComponent<HandScript>().StartDelivery(MovePlane, Random.Range(0, 5));
             collected = 0;
         }
         if (Jump)
@@ -99,18 +109,35 @@ public class PlayerMover : MonoBehaviour
             Jump = false;
             jumpScale = 0;
         }
-
-
-
-        if (depthScale < 0.5f)
+        if (invistimer >= 0)
         {
-            depthScale += 0.0001f;
+            invistimer--;
+            
+        }
+        if (invistimer == 0)
+        {
+            gameObject.GetComponent<Collider>().enabled = true;
+            invincible = false;
         }
 
+
+        if (depthScale < 0.5f&& depthScale > 0)
+        {
+            depthScale += recoverySpeed;
+        }
+        if(depthScale <0){
+            jumpScale-=0.1f;
+        }
+        if(jumpScale <= -1){
+            leftRightScale = 0.5f;
+        leftRightScaleDelay = leftRightScale;
+        depthScale = 0.5f;
+        jumpScale = 0;
+        }
         PlayerPos = MovePlayer();
         transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos, .25f);
         leftRightScale = Mathf.MoveTowards(leftRightScale, leftRightScaleDelay, 0.1f);
-		transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 0.1f*playersNewSize);
+        transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 0.1f * playersNewSize);
     }
 
     void MoveHorizontal(int lanesToRight)
@@ -133,22 +160,23 @@ public class PlayerMover : MonoBehaviour
     }
     Vector3 MovePlayer()
     {
-        
+
         float xcom = (xDistance * leftRightScale) - (xDistance / 2);
-        
+
         float zcom = (zDistance * depthScale) - (zDistance / 2);
-        
+
         float ycom = (yDistance * jumpScale);
         return MovePlane.right * xcom + MovePlane.forward * zcom + MovePlane.up * ycom;
 
 
     }
 
-    public static Vector3 GetPosInPlane( float xScale,float yScale, float zScale,Transform refPlane){
+    public static Vector3 GetPosInPlane(float xScale, float yScale, float zScale, Transform refPlane)
+    {
         float xcom = (xDistance * xScale) - (xDistance / 2);
-        
+
         float zcom = (zDistance * zScale) - (zDistance / 2);
-        
+
         float ycom = (yDistance * yScale);
         return refPlane.right * xcom + refPlane.forward * zcom + refPlane.up * ycom;
     }
@@ -160,8 +188,11 @@ public class PlayerMover : MonoBehaviour
         {
             Debug.Log("Hit box");
             depthScale -= 0.1f;
-            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000 - transform.forward * 1000 + transform.right * 2000 * (leftRightScale - 0.5f));
-            belt.speed -=1;
+            InvisRun();
+            if(belt.speed >2){
+                belt.speed -= 0.25f;
+            }
+            
         }
         Debug.Log(other.gameObject.tag.ToString());
         if (other.gameObject.tag == "Collectible")
@@ -169,13 +200,15 @@ public class PlayerMover : MonoBehaviour
             collected++;
             Debug.Log("Collected collectible");
             GameObject.Destroy(other.gameObject);
-            belt.speed += 1;
+            belt.speed += 0.25f;
         }
         if (other.gameObject.tag == "giantPowerUp")
         {
             StartCoroutine(Giant());
         }
-        if(other.gameObject.tag == "Box" && giant == true){
+
+        if (other.gameObject.tag == "Box" && giant == true)
+        {
             Instantiate(breakStuff, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             obstaclesSmashed++;
@@ -191,8 +224,15 @@ public class PlayerMover : MonoBehaviour
         yield return new WaitForSeconds(8f); // Wait for 8 seconds
         giant = false;
         Instantiate(puff, transform.position, Quaternion.identity);
-        targetScale *= 1/playersNewSize ; // shrink back to small
+        targetScale *= 1 / playersNewSize; // shrink back to small
         obstaclesSmashed = 0;
+    }
+    void InvisRun()
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        invincible = true;
+        
+        invistimer = 90;
     }
 
 }

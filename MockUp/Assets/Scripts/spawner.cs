@@ -55,9 +55,14 @@ public class spawner : MonoBehaviour {
 					powerUp = false;
 					Hand.GetComponent<HandScript>().deliver = false;
 				}
-			foreach(int lane in blockLanes ){
-				Instantiate(trash[Random.Range(0,trash.Count)],transform.position+transform.right*lane*PlayerMover.xDistance/4,transform.rotation);
+			if(blockLanes.Count == 1){
+				Instantiate(trash[0],transform.position+transform.right*lastLane*PlayerMover.xDistance/4,transform.rotation);
+			}else{
+				foreach(int lane in blockLanes ){
+				Instantiate(trash[Random.Range(1,trash.Count)],transform.position+transform.right*lane*PlayerMover.xDistance/4,transform.rotation);
 			}
+			}
+			
 			
 			
 				
