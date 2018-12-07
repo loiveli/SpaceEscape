@@ -4,10 +4,10 @@ using UnityEngine;
 using System.Linq;
 public class spawner : MonoBehaviour {
 
-    public GameObject trash;
+    public List<GameObject> trash;
 	public GameObject collectible;
 	public GameObject Hand;
-	public GameObject PowerUpObj;
+	public List<GameObject> PowerUpObj;
 	public float spawntime;
 	public float spawnrate;
 	public int laneblocks;
@@ -51,12 +51,12 @@ public class spawner : MonoBehaviour {
 					Instantiate(collectible,transform.position+transform.right*lastLane*PlayerMover.xDistance/4,transform.rotation);
 				}else{
 					blockLanes.Remove(powerUpLane);
-					Instantiate(PowerUpObj, transform.position + transform.right*powerUpLane*PlayerMover.xDistance/4, transform.rotation);
+					Instantiate(PowerUpObj[Random.Range(0,PowerUpObj.Count)], transform.position + transform.right*powerUpLane*PlayerMover.xDistance/4, transform.rotation);
 					powerUp = false;
 					Hand.GetComponent<HandScript>().deliver = false;
 				}
 			foreach(int lane in blockLanes ){
-				Instantiate(trash,transform.position+transform.right*lane*4.5f,transform.rotation);
+				Instantiate(trash[Random.Range(0,trash.Count)],transform.position+transform.right*lane*PlayerMover.xDistance/4,transform.rotation);
 			}
 			
 			
