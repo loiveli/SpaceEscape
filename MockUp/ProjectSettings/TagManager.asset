@@ -9,6 +9,8 @@ TagManager:
   - DropPoint
   - Collectible
   - giantPowerUp
+  - DeadZone
+  - MillZone
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - DeadZone
+  - Player
   - 
   - 
   - 

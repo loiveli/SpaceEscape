@@ -78,6 +78,12 @@ public class PlayerMover : MonoBehaviour
             }
         }
 
+        if(transform.position.z > 13.3f)
+        {
+            belt.speed = 0;
+            Debug.Log("The end!");
+        }
+
     }
 
     void FixedUpdate()
@@ -182,6 +188,9 @@ public class PlayerMover : MonoBehaviour
             totalObstaclesSmashed++;
         }
     }
+
+
+
 
     IEnumerator Giant()
     {
