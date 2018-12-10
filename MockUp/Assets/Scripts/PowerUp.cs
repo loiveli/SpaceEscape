@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
 
-    [SerializeField]
-    Transform dropPoint;
+   
 
 	// Use this for initialization
 	void Start () {
@@ -26,11 +25,5 @@ public class PowerUp : MonoBehaviour {
 	}
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "DropPoint")
-        {
-            GetComponent<Rigidbody>().useGravity = true;
-        }
-    }
+   
 }

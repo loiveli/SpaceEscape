@@ -10,13 +10,17 @@ public class Belt : MonoBehaviour {
     float mattSpeedSlower = 75f;
 	private float currentScroll;
     PlayerMover player;
-    
-	private void Update()
+
+
+
+    private void Update()
     {
 
 		//Texture Scroller (Main texture) Scrolling at the same speed as the current scroll speed
 		currentScroll = currentScroll + Time.deltaTime * speed/ mattSpeedSlower;
 		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(-currentScroll,0);      
+
+
     }
 
     
@@ -26,6 +30,8 @@ public class Belt : MonoBehaviour {
         rb.position += transform.right * speed * Time.deltaTime;
         rb.MovePosition(rb.position - transform.right * speed * Time.deltaTime);
     }
+
+    
 
 }
 
