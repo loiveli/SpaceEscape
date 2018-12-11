@@ -18,14 +18,17 @@ ModelImporter:
     2300002: Cylinder.030
     2300004: Cylinder.043
     2300006: Cylinder.044
+    2300008: //RootNode
     3300000: Cylinder.029
     3300002: Cylinder.030
     3300004: Cylinder.043
     3300006: Cylinder.044
+    3300008: //RootNode
     4300000: Cylinder.044
     4300002: Cylinder.043
     4300004: Cylinder.030
     4300006: Cylinder.029
+    4300008: Beacon
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -65,7 +68,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -98,7 +101,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

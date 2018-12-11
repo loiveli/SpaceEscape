@@ -21,16 +21,19 @@ ModelImporter:
     2300004: Cube.048
     2300006: Cube.098
     2300008: Cube.099
+    2300010: //RootNode
     3300000: Cube.010
     3300002: Cube.029
     3300004: Cube.048
     3300006: Cube.098
     3300008: Cube.099
+    3300010: //RootNode
     4300000: Cube.099
     4300002: Cube.098
     4300004: Cube.048
     4300006: Cube.029
     4300008: Cube.010
+    4300010: SemiconductorFull
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -103,7 +106,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

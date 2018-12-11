@@ -33,6 +33,7 @@ ModelImporter:
     2300012: Cylinder.036
     2300014: Cylinder.037
     2300016: Cylinder.038
+    2300018: //RootNode
     3300000: Cube.039
     3300002: Cylinder.031
     3300004: Cylinder.032
@@ -42,6 +43,7 @@ ModelImporter:
     3300012: Cylinder.036
     3300014: Cylinder.037
     3300016: Cylinder.038
+    3300018: //RootNode
     4300000: Cylinder.038
     4300002: Cylinder.037
     4300004: Cylinder.036
@@ -51,6 +53,7 @@ ModelImporter:
     4300012: Cylinder.032
     4300014: Cube.039
     4300016: Cylinder.031
+    4300018: Microscope
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -123,7 +126,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
