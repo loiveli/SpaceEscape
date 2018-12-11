@@ -21,16 +21,19 @@ ModelImporter:
     2300004: Plane.006
     2300006: Plane.008
     2300008: Plane.009
+    2300010: //RootNode
     3300000: Plane.004
     3300002: Plane.005
     3300004: Plane.006
     3300006: Plane.008
     3300008: Plane.009
+    3300010: //RootNode
     4300000: Plane.009
     4300002: Plane.008
     4300004: Plane.006
     4300006: Plane.005
     4300008: Plane.004
+    4300010: TriangleBattery
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -103,7 +106,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

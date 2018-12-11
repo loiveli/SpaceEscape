@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ceb36c6d996d6b44a3fb66f6c8dbd9d
+guid: 51e1080d176d4b14bb0b4eb760066a88
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -18,14 +18,17 @@ ModelImporter:
     2300002: Cylinder.002
     2300004: Cylinder.003
     2300006: Cylinder.012
+    2300008: //RootNode
     3300000: Cylinder.001
     3300002: Cylinder.002
     3300004: Cylinder.003
     3300006: Cylinder.012
-    4300000: Cylinder.012
-    4300002: Cylinder.003
-    4300004: Cylinder.002
-    4300006: Cylinder.001
+    3300008: //RootNode
+    4300000: Cylinder.001
+    4300002: Cylinder.002
+    4300004: Cylinder.003
+    4300006: Cylinder.012
+    4300008: Battery
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -98,7 +101,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
