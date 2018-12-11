@@ -26,7 +26,7 @@ public class Stats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timeRunned.text = "Runned " + Time.time.ToString("0.00") + " sec";
+        timeRunned.text = "Runned " + Time.time.ToString("0.00");
         collectedItemsText.text = player.collected.ToString() + " Collected";
         speed.text = "Speed "+ belt.speed.ToString("0");
         if (player.giant)

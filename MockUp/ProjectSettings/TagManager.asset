@@ -12,6 +12,8 @@ TagManager:
   - DeadZone
   - MillZone
   - LegoGate
+  - BootPU
+  - SlowBomb
   layers:
   - Default
   - TransparentFX
