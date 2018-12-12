@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 54871941365853438}
   - component: {fileID: 114014208785487798}
   m_Layer: 0
-  m_Name: vent_container
+  m_Name: Vent_Container
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

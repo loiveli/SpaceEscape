@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMover : MonoBehaviour
@@ -41,6 +42,10 @@ public class PlayerMover : MonoBehaviour
     public static float xDistance;
     public static float yDistance;
     public static float zDistance;
+    [SerializeField]
+    float puTime;
+    [SerializeField]
+    float speedFactor;
     void Start()
     {
         jumpSpeed = Mathf.PI / 1.5f;
@@ -81,7 +86,7 @@ public class PlayerMover : MonoBehaviour
         if(transform.position.z > 13.3f)
         {
             belt.speed = 0;
-            Debug.Log("The end!");
+            StartCoroutine(PlayerAtStart());
         }
 
     }
@@ -115,7 +120,7 @@ public class PlayerMover : MonoBehaviour
 
         PlayerPos = MovePlayer();
         transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos, .25f);
-        leftRightScale = Mathf.MoveTowards(leftRightScale, leftRightScaleDelay, 0.1f);
+        leftRightScale = Mathf.MoveTowards(leftRightScale, leftRightScaleDelay, .1f);
 		transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 0.1f*playersNewSize);
     }
 
@@ -187,6 +192,14 @@ public class PlayerMover : MonoBehaviour
             obstaclesSmashed++;
             totalObstaclesSmashed++;
         }
+        if(other.gameObject.tag == "BootPU")
+        {
+            StartCoroutine(Boot());
+        }
+        if(other.gameObject.tag == "SlowBomb")
+        {
+            StartCoroutine(Slow());
+        }
     }
 
 
@@ -202,6 +215,40 @@ public class PlayerMover : MonoBehaviour
         Instantiate(puff, transform.position, Quaternion.identity);
         targetScale *= 1/playersNewSize ; // shrink back to small
         obstaclesSmashed = 0;
+    }
+
+    IEnumerator Boot()
+    {
+                
+        belt.speed *= speedFactor;
+        yield return new WaitForSeconds(puTime);
+        belt.speed /= speedFactor;
+    }
+
+    IEnumerator Slow()
+    {
+        float startSpeed = belt.speed;
+        jumpHeight = 0.1f;
+        jumpSpeed *= 2;
+        if (belt.speed > 15)
+        {
+            belt.speed /= 2;
+        } else
+        {
+            belt.speed = 10;
+        }
+        yield return new WaitForSeconds(puTime);
+        jumpSpeed = Mathf.PI / 1.5f;
+        jumpHeight = .5f;
+        belt.speed = startSpeed;
+    }
+    IEnumerator PlayerAtStart()
+    {
+        GetComponent<Collider>().enabled = false;
+        PlayerPos = new Vector3(-5.4f,0.27f,-6.92f);
+        yield return new WaitForSeconds(4f);
+        depthScale = .5f;
+        GetComponent<Collider>().enabled = true;
     }
 
 }

@@ -109,9 +109,10 @@ GameObject:
   - component: {fileID: 65137061864169482}
   - component: {fileID: 136654084445978810}
   - component: {fileID: 54819208671217574}
+  - component: {fileID: 114289890160133608}
   m_Layer: 0
   m_Name: Power Boot
-  m_TagString: PowerUp
+  m_TagString: BootPU
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -478,6 +479,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3264053, y: 0.43658632, z: 0.6157825}
   m_Center: {x: 0.36267695, y: -0.5328225, z: 0}
+--- !u!114 &114289890160133608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841777581937634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1047e5264d4234dcdbc54db554457c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136654084445978810
 CapsuleCollider:
   m_ObjectHideFlags: 1

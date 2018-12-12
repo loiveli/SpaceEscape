@@ -92,9 +92,10 @@ GameObject:
   - component: {fileID: 54047222658873220}
   - component: {fileID: 122312307076080512}
   - component: {fileID: 65837591345727506}
+  - component: {fileID: 114567205171070052}
   m_Layer: 0
   m_Name: Slow Bomb
-  m_TagString: Untagged
+  m_TagString: SlowBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,7 +369,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538029293443922}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.5026, y: 0.207, z: -0.5206857}
+  m_LocalPosition: {x: -7.98, y: 3.698895, z: -13.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4913339590723342}
@@ -916,6 +917,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8302846, y: 0.61048526, z: 0.6626354}
   m_Center: {x: 0, y: -0.000000014901161, z: 0}
+--- !u!114 &114567205171070052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538029293443922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fea2e0a93d2f54798952d3f4016cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1263126295123384, guid: 5ab65ec16917a9946bffe75504431dbe, type: 2}
 --- !u!122 &122312307076080512
 Halo:
   m_ObjectHideFlags: 1

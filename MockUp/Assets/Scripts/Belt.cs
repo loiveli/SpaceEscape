@@ -10,6 +10,10 @@ public class Belt : MonoBehaviour {
     float mattSpeedSlower = 75f;
 	private float currentScroll;
     PlayerMover player;
+    [SerializeField]
+    float minSpeed;
+    [SerializeField]
+    float maxSpeed;
 
 
 
@@ -18,8 +22,17 @@ public class Belt : MonoBehaviour {
 
 		//Texture Scroller (Main texture) Scrolling at the same speed as the current scroll speed
 		currentScroll = currentScroll + Time.deltaTime * speed/ mattSpeedSlower;
-		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(-currentScroll,0);      
+		GetComponent<Renderer>().material.mainTextureOffset = new Vector2(-currentScroll,0);
 
+        if (speed <= minSpeed)
+        {
+            speed = minSpeed;
+        }
+        else if (speed >= maxSpeed)
+        {
+            speed = maxSpeed;
+        }
+        
 
     }
 
