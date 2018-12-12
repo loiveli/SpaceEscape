@@ -39,6 +39,8 @@ public class Belt : MonoBehaviour {
     
     void FixedUpdate()
     {
+        speed += Time.deltaTime;
+
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.position += transform.right * speed * Time.deltaTime;
         rb.MovePosition(rb.position - transform.right * speed * Time.deltaTime);

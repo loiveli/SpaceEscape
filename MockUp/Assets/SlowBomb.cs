@@ -5,6 +5,8 @@ using UnityEngine;
 public class SlowBomb : MonoBehaviour {
     [SerializeField]
     GameObject explosion;
+    [SerializeField]
+    GameObject slowText;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +22,7 @@ public class SlowBomb : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(slowText, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
