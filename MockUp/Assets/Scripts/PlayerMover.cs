@@ -48,6 +48,7 @@ public class PlayerMover : MonoBehaviour
     float speedFactor;
     void Start()
     {
+        strafeSpeed = 0.2f;
         jumpSpeed = Mathf.PI / 1.5f;
         lanes = 5;
         leftRightScale = 0.5f;
@@ -94,7 +95,7 @@ public class PlayerMover : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (collected >= 2 &&Hand.GetComponent<HandScript>().deliver == false)
+        if (collected >= 20 &&Hand.GetComponent<HandScript>().deliver == false)
         {
             Hand.GetComponent<HandScript>().StartDelivery(MovePlane,Random.Range(0,5));
             collected = 0;
@@ -120,7 +121,7 @@ public class PlayerMover : MonoBehaviour
 
         PlayerPos = MovePlayer();
         transform.position = Vector3.MoveTowards(transform.position, MovePlane.position + PlayerPos, .25f);
-        leftRightScale = Mathf.MoveTowards(leftRightScale, leftRightScaleDelay, .1f);
+        leftRightScale = Mathf.MoveTowards(leftRightScale, leftRightScaleDelay, strafeSpeed);
 		transform.localScale = Vector3.MoveTowards(transform.localScale, targetScale, 0.1f*playersNewSize);
     }
 
@@ -171,8 +172,8 @@ public class PlayerMover : MonoBehaviour
         {
             Debug.Log("Hit box");
             depthScale -= 0.1f;
-            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 1000 - transform.forward * 1000 + transform.right * 2000 * (leftRightScale - 0.5f));
-            belt.speed -=1;
+            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 500 + transform.forward * 500 - transform.right * 1000 * (leftRightScale - 0.5f));
+            if(belt.speed> 2) belt.speed -=1;
         }
         Debug.Log(other.gameObject.tag.ToString());
         if (other.gameObject.tag == "Collectible")
@@ -180,7 +181,7 @@ public class PlayerMover : MonoBehaviour
             collected++;
             Debug.Log("Collected collectible");
             GameObject.Destroy(other.gameObject);
-            belt.speed += 1;
+            belt.speed += .1f;
         }
         if (other.gameObject.tag == "giantPowerUp")
         {
@@ -219,10 +220,11 @@ public class PlayerMover : MonoBehaviour
 
     IEnumerator Boot()
     {
-                
+        strafeSpeed *=2;
         belt.speed *= speedFactor;
         yield return new WaitForSeconds(puTime);
         belt.speed /= speedFactor;
+        strafeSpeed /=2;
     }
 
     IEnumerator Slow()
