@@ -19,6 +19,10 @@ public class Stats : MonoBehaviour {
     TextMeshPro speed;
     [SerializeField]
     Belt belt;
+    bool gameEnded;
+    private float totalRunTime;
+
+
 	// Use this for initialization
 	void Start () {
         
@@ -26,7 +30,17 @@ public class Stats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        timeRunned.text = "Runned " + Time.time.ToString("0.00");
+        totalRunTime += Time.deltaTime;
+        if(player.transform.position.z > 13.3 && !gameEnded)
+        {
+            PlayerPrefs.SetFloat("stat", totalRunTime);
+            gameEnded = true;
+        }
+        if (!gameEnded)
+        {
+            timeRunned.text = "Runned " + totalRunTime.ToString("0.00");
+        }
+        
         collectedItemsText.text = player.collected.ToString() + " Collected";
         speed.text = "Speed "+ belt.speed.ToString("0");
         if (player.giant)

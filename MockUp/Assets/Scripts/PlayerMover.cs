@@ -230,9 +230,6 @@ public class PlayerMover : MonoBehaviour
     IEnumerator Slow()
     {
         float startSpeed = belt.speed;
-        jumpHeight = 0.1f;
-        jumpSpeed *= 2;
-        strafeSpeed /=2;
         if (belt.speed > 15)
         {
             belt.speed /= 2;
@@ -241,10 +238,6 @@ public class PlayerMover : MonoBehaviour
             belt.speed = 10;
         }
         yield return new WaitForSeconds(puTime);
-        strafeSpeed *=2;
-        jumpSpeed = Mathf.PI / 1.5f;
-        jumpHeight = .5f;
-        belt.speed = startSpeed;
     }
     IEnumerator PlayerAtStart()
     {

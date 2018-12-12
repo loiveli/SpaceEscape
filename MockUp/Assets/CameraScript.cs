@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraScript : MonoBehaviour {
     [SerializeField]
@@ -29,8 +30,8 @@ public class CameraScript : MonoBehaviour {
     IEnumerator EndMovement()
     {
         transform.position = Vector3.MoveTowards(transform.position, endPos.transform.position, step);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, endPos.transform.rotation, step);
         yield return new WaitForSeconds(5);
-        transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, step);
-        
+        SceneManager.LoadScene("newScene");
     }
 }

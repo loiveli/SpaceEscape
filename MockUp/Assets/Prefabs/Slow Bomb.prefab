@@ -929,6 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1263126295123384, guid: 5ab65ec16917a9946bffe75504431dbe, type: 2}
+  slowText: {fileID: 1100973475577484, guid: 2a8c9449501d15740bd64444c59f7081, type: 2}
 --- !u!122 &122312307076080512
 Halo:
   m_ObjectHideFlags: 1
